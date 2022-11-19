@@ -16,7 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NetCoreApi.Data\NetCoreApi.Data.csproj" />
-    <ProjectReference Include="..\NetCoreApi.Model\NetCoreApi.Services.csproj" />
+    <ProjectReference Include="..\NetCoreApi.Services\NetCoreApi.Services.csproj" />
   </ItemGroup>
 
 </Project>

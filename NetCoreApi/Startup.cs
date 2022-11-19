@@ -38,7 +38,12 @@ namespace NetCoreApi
             //Services
             services.AddScoped<IClienteService, ClienteService>();
             services.AddControllers();
-            services.AddDbContext<ClientesDBContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
+            services.AddDbContext<ClientesDBContext>(x => 
+                x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"),
+                sqlServerOptionsAction: sqlOptions =>
+                {
+                    sqlOptions.EnableRetryOnFailure();
+                })
             );
             services.AddSwaggerGen(c =>
             {
@@ -57,8 +62,6 @@ namespace NetCoreApi
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "NetCoreApi v1"));
             }
-
-            app.UseHttpsRedirection();
 
             app.UseRouting();
             

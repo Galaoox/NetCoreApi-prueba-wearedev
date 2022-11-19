@@ -60,8 +60,7 @@ namespace NetCoreApi.Controllers
         {
             try
             {
-                await _clientService.InsertCliente(client);
-                return Ok();
+                return Ok(await _clientService.InsertCliente(client));
             }
             catch (Exception ex)
             {
@@ -76,8 +75,7 @@ namespace NetCoreApi.Controllers
         {
             try
             {
-                await _clientService.UpdateCliente(id, client);
-                return Ok();
+                return Ok(await _clientService.UpdateCliente(id, client));
             }
             catch (Exception ex)
             {
